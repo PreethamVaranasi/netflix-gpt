@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "./Header";
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(true);
-  const toggleSignIn = () => {
+  const toggleSignUp = () => {
     setIsSignUp(!isSignUp);
   };
   return (
@@ -33,7 +33,7 @@ const Login = () => {
         <p className="text-3xl mb-6 font-bold">
           {isSignUp ? "Sign In" : "Sign Up"}
         </p>
-        {isSignUp && (
+        {!isSignUp && (
           <input
             className="w-full bg-gray-700 rounded-sm p-3 mb-4"
             type="text"
@@ -50,15 +50,17 @@ const Login = () => {
           type="password"
           placeholder="Password"
         />
-        <button className="w-full bg-red-700 rounded-md p-3">Sign In</button>
+        <button className="w-full bg-red-700 rounded-md p-3">
+          {isSignUp ? "Sign In" : "Sign Up"}
+        </button>
 
         <p className="mt-6 text-gray-500">
-          New to Netflix?
+          {isSignUp ? "Already a User?" : "New to Netflix?"}
           <span
             className="cursor-pointer hover:underline m-0 text-white"
-            onClick={toggleSignIn}
+            onClick={toggleSignUp}
           >
-            Sign Up Now
+            {isSignUp ? "Sign In Now" : "Sign Up Now"}
           </span>
         </p>
         <p className="text-xs mt-4 text-gray-500">
